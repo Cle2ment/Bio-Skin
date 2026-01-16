@@ -39,4 +39,4 @@ This project is released under a split licensing model to ensure both the hardwa
 **AGPLv3:** Requires that any changes to the software, even if used only as a network service, must have their source code made available to users.
 
 ## Author
-Copyright Cle2ment, 2026.
+Copyright Cle2ment, Sphinx, 2026.
