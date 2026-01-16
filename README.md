@@ -37,3 +37,6 @@ This project is released under a split licensing model to ensure both the hardwa
 **CERN-OHL-S 2.0:** Requires that any modifications to the hardware design files must also be shared under the same license.
 
 **AGPLv3:** Requires that any changes to the software, even if used only as a network service, must have their source code made available to users.
+
+## Author
+Copyright Cle2ment, 2026.
