@@ -1,6 +1,7 @@
 # folders
 .vscode/
 .cache/
+.opencode/
 
 # configs
 compile_commands.json
