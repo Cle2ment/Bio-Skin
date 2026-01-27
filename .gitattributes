@@ -1,0 +1,21 @@
+# LFS tracked files
+
+# 建模文件
+Hardware/**/*.stl filter=lfs diff=lfs merge=lfs -text
+
+# PCB设计文件
+*.DRL filter=lfs diff=lfs merge=lfs -text
+
+*.GKO filter=lfs diff=lfs merge=lfs -text
+*.GBL filter=lfs diff=lfs merge=lfs -text
+*.GBS filter=lfs diff=lfs merge=lfs -text
+*.GDL filter=lfs diff=lfs merge=lfs -text
+*.GTL filter=lfs diff=lfs merge=lfs -text
+*.GTP filter=lfs diff=lfs merge=lfs -text
+*.GTO filter=lfs diff=lfs merge=lfs -text
+*.GTS filter=lfs diff=lfs merge=lfs -text
+
+# 图片
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text

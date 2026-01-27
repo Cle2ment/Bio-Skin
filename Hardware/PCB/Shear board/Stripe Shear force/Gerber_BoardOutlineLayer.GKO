@@ -1,21 +1,3 @@
-G04 Layer: BoardOutlineLayer*
-G04 EasyEDA v6.5.46, 2025-04-24 22:25:55*
-G04 192aca0ecf1545dab66bbea25af66574,7be8f16a26344db1bf46185b0a727cd7,10*
-G04 Gerber Generator version 0.2*
-G04 Scale: 100 percent, Rotated: No, Reflected: No *
-G04 Dimensions in millimeters *
-G04 leading zeros omitted , absolute positions ,4 integer and 5 decimal *
-%FSLAX45Y45*%
-%MOMM*%
-
-%ADD10C,0.2540*%
-D10*
-X0Y0D02*
-G01*
-X599998Y0D01*
-X599998Y-2199995D01*
-X0Y-2199995D01*
-X0Y0D01*
-
-%LPD*%
-M02*
+version https://git-lfs.github.com/spec/v1
+oid sha256:1c5e8d7c019671da6910b2a67718dd08b847a07f66d55312518fd57738b5cace
+size 471
