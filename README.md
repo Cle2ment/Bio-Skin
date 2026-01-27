@@ -6,7 +6,7 @@
 3. 选择ESP32S3 Dev Module或者实际的ESP32S3开发板
 4. 验证项目代码
 
-## 上游项目原始说明
+## Upstream Repository README 原始项目介绍
 
 ### Original Version: Bio-Skin multi-modal tactile sensor
 
