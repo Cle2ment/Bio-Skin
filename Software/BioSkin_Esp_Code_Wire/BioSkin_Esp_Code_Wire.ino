@@ -5,23 +5,23 @@
 #define MUX_S1 2
 #define MUX_S2 3
 #define MUX_S3 4
-#define MUX_SIG 5 // Signal from MUX to ESP32-S3
-#define MUX_EN 15 // MUX enable pin
-#define HEATER_CTRL 6 // Heater control pin
-#define STANDARD_SENSOR 10 // New standard sensor analog input
+#define MUX_SIG 5           // Signal from MUX to ESP32-S3
+#define MUX_EN 15           // MUX enable pin
+#define HEATER_CTRL 6       // Heater control pin
+#define STANDARD_SENSOR 10  // New standard sensor analog input
 
 // Multiplexer control
 uint8_t muxChannel[10] = {
-  0b0000, 0b0001, 0b0010, 0b0011, 0b0100, 
+  0b0000, 0b0001, 0b0010, 0b0011, 0b0100,
   0b0101, 0b0110, 0b0111, 0b1000, 0b1001
 };
 
 // Sampling interval
-const unsigned long samplingInterval = 5; // 10ms for 100Hz
-const unsigned long heaterPeriod = 500; // 0.5 seconds in ms
+const unsigned long samplingInterval = 5;  // 10ms for 100Hz
+const unsigned long heaterPeriod = 500;    // 0.5 seconds in ms
 
 unsigned long lastHeaterUpdate = 0;
-int heaterDutyCycle = 0; // Duty cycle in percentage
+int heaterDutyCycle = 0;  // Duty cycle in percentage
 
 void setup() {
   // Initialize Serial Monitor
@@ -35,7 +35,7 @@ void setup() {
   pinMode(MUX_EN, OUTPUT);
   pinMode(HEATER_CTRL, OUTPUT);
   pinMode(MUX_SIG, INPUT);
-  pinMode(STANDARD_SENSOR, INPUT); // Configure the standard sensor pin as input
+  pinMode(STANDARD_SENSOR, INPUT);  // Configure the standard sensor pin as input
 
   // Enable multiplexer
   digitalWrite(MUX_EN, LOW);
@@ -43,20 +43,20 @@ void setup() {
   digitalWrite(HEATER_CTRL, LOW);
 
   // Set ADC characteristics
-  analogReadResolution(12); // Set ADC resolution to 12 bits
-  analogSetAttenuation(ADC_11db); // Set attenuation to measure full range (0 - 3.3V)
+  analogReadResolution(12);        // Set ADC resolution to 12 bits
+  analogSetAttenuation(ADC_11db);  // Set attenuation to measure full range (0 - 3.3V)
 }
 
 void loop() {
   // Array to store analog readings
-  int readings[11]; // Adjusted size to include standard sensor data
+  int readings[11];  // Adjusted size to include standard sensor data
 
   // Loop through each channel of the multiplexer
   for (int i = 0; i < 10; i++) {
     selectMuxChannel(i);
-    delayMicroseconds(100); // Allow settling time (0.1ms)
+    delayMicroseconds(100);  // Allow settling time (0.1ms)
     readings[i] = analogRead(MUX_SIG);
-    if (i == 9) { // Check the temperature channel
+    if (i == 9) {  // Check the temperature channel
       adjustHeater(readings[i]);
     }
   }
@@ -96,11 +96,11 @@ void sendDataSerial(int *readings) {
 
 void adjustHeater(int temperatureAdcValue) {
   if (temperatureAdcValue < 1100) {
-    heaterDutyCycle = 100; // Maximum duty cycle
+    heaterDutyCycle = 100;  // Maximum duty cycle
   } else if (temperatureAdcValue >= 1100 && temperatureAdcValue < 2050) {
-    heaterDutyCycle = map(temperatureAdcValue, 1100, 2100, 100, 0); // Linearly decrease duty cycle
+    heaterDutyCycle = map(temperatureAdcValue, 1100, 2100, 100, 0);  // Linearly decrease duty cycle
   } else {
-    heaterDutyCycle = 0; // Turn off heater
+    heaterDutyCycle = 0;  // Turn off heater
   }
 
   unsigned long currentTime = millis();
@@ -108,10 +108,10 @@ void adjustHeater(int temperatureAdcValue) {
   unsigned long offTime = heaterPeriod - onTime;
 
   if (heaterDutyCycle > 0 && currentTime - lastHeaterUpdate < onTime) {
-    digitalWrite(HEATER_CTRL, HIGH); // Heater ON
+    digitalWrite(HEATER_CTRL, HIGH);  // Heater ON
   } else if (heaterDutyCycle > 0 && currentTime - lastHeaterUpdate >= onTime && currentTime - lastHeaterUpdate < heaterPeriod) {
-    digitalWrite(HEATER_CTRL, LOW); // Heater OFF
+    digitalWrite(HEATER_CTRL, LOW);  // Heater OFF
   } else if (currentTime - lastHeaterUpdate >= heaterPeriod) {
-    lastHeaterUpdate = currentTime; // Reset the cycle
+    lastHeaterUpdate = currentTime;  // Reset the cycle
   }
 }
