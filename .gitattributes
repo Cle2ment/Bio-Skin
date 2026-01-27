@@ -1,7 +1,7 @@
 # LFS tracked files
 
 # 建模文件
-Hardware/**/*.stl filter=lfs diff=lfs merge=lfs -text
+*.stl filter=lfs diff=lfs merge=lfs -text
 
 # PCB设计文件
 *.DRL filter=lfs diff=lfs merge=lfs -text
