@@ -1,5 +1,11 @@
 # Bio-Skin 多模态触觉传感器
 
+## 环境配置
+1. 安装使用Arduino IDE
+2. 在Arduino IDE中安装ESP32开发板支持（esp32）
+3. 选择ESP32S3 Dev Module或者实际的ESP32S3开发板
+4. 验证项目代码
+
 ## 上游项目原始说明
 - **原版**
 ```markdown
