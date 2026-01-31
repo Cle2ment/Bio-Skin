@@ -5,3 +5,6 @@
 
 # configs
 compile_commands.json
+
+# Creo generated local files
+trail.txt.*
