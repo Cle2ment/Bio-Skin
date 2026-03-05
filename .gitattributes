@@ -23,3 +23,6 @@
 # 表格文件
 *.xls filter=lfs diff=lfs merge=lfs -text
 *.xlsx filter=lfs diff=lfs merge=lfs -text
+
+# 压缩包
+*.zip filter=lfs diff=lfs merge=lfs -text
