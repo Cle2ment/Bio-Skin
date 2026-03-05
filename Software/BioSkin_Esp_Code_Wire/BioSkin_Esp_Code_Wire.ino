@@ -37,7 +37,7 @@ void setup() {
   pinMode(MUX_SIG, INPUT);
   pinMode(STANDARD_SENSOR, INPUT);  // 将标准传感器引脚配置为输入
 
-  // 使能多路复用器
+  // 使用多路复用器
   digitalWrite(MUX_EN, LOW);
   // 初始关闭加热器
   digitalWrite(HEATER_CTRL, LOW);
